@@ -1,9 +1,11 @@
 ---
 import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { site } from '../data/site';
 
 const logoPath = '/logos/fsec-ss.png';
-const hasLogo = existsSync(new URL(`../../public${logoPath}`, import.meta.url));
+// Resolve against the project root; import.meta.url points inside dist/ during prerender.
+const hasLogo = existsSync(join(process.cwd(), 'public', logoPath));
 
 // PLACEHOLDER: replace with the club's official mission statement.
 const mission = [
@@ -49,7 +51,7 @@ const mission = [
     <div class="hud flex aspect-square items-center justify-center bg-bg-2 p-8" style="--c: 17px">
       {
         hasLogo ? (
-          <img src={logoPath} alt={`${site.host.short} logo`} width="240" height="240" class="max-h-full w-auto" />
+          <img src={logoPath} alt={`${site.host.short} logo`} width="197" height="197" class="size-44" />
         ) : (
           <p class="text-center font-display">
             <span class="block text-5xl font-bold text-cyan">FSEC</span>

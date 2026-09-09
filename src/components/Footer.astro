@@ -1,26 +1,46 @@
 ---
 import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { site } from '../data/site';
 
 const year = new Date().getFullYear();
-const logos = [
-  { path: '/logos/fsec-ss.png', alt: 'FSEC-SS', text: 'FSEC-SS' },
-  { path: '/logos/apu.png', alt: 'Asia Pacific University', text: 'APU' },
-].map((l) => ({ ...l, exists: existsSync(new URL(`../../public${l.path}`, import.meta.url)) }));
+// Build runs from the project root, so resolve against cwd rather than
+// import.meta.url (which points inside dist/ during prerender).
+const hasLogo = (path: string) => existsSync(join(process.cwd(), 'public', path));
+const fsecLogo = hasLogo('/logos/fsec-ss.png');
+// apu.png is the white-on-transparent variant made for dark backgrounds.
+const apuLogo = hasLogo('/logos/apu.png');
 ---
 
 <footer class="border-t border-line">
   <div
     class="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:items-center md:justify-between md:px-10 lg:pr-28"
   >
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-5">
       {
-        logos.map((l) =>
-          l.exists ? (
-            <img src={l.path} alt={l.alt} width="48" height="48" class="h-12 w-auto" />
-          ) : (
-            <span class="font-display text-xl font-bold text-fg">{l.text}</span>
-          ),
+        fsecLogo ? (
+          <img
+            src="/logos/fsec-ss.png"
+            alt={site.host.full}
+            width="197"
+            height="197"
+            class="size-14"
+          />
+        ) : (
+          <span class="font-display text-xl font-bold text-fg">{site.host.short}</span>
+        )
+      }
+      {
+        apuLogo ? (
+          <img
+            src="/logos/apu.png"
+            alt={site.host.university}
+            width="1024"
+            height="298"
+            class="h-12 w-auto"
+          />
+        ) : (
+          <span class="font-display text-xl font-bold text-fg">APU</span>
         )
       }
     </div>
