@@ -25,7 +25,8 @@ const { title, description } = Astro.props;
   </head>
   <body class="min-h-screen antialiased">
     <slot name="rail" />
-    <main>
+    <!-- Right padding below md keeps content clear of the fixed side rail. -->
+    <main class="pr-7 md:pr-0">
       <slot />
     </main>
   </body>

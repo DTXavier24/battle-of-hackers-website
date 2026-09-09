@@ -12,7 +12,11 @@ const upcoming = entry.status === 'upcoming';
 
 <li
   id={`era-${entry.id}`}
-  class="relative grid grid-cols-[2rem_1fr] gap-x-4 md:grid-cols-[1fr_3rem_1fr] md:gap-x-8"
+  class:list={[
+    'relative grid grid-cols-[2rem_1fr] gap-x-4 md:grid-cols-[1fr_3rem_1fr] md:gap-x-8',
+    // Interleave cards on desktop so alternating sides do not leave large gaps.
+    index > 0 && 'md:-mt-24',
+  ]}
 >
   <div class="col-start-1 row-start-1 flex justify-center pt-8 md:col-start-2">
     <span
@@ -29,7 +33,7 @@ const upcoming = entry.status === 'upcoming';
       onLeft ? 'md:col-start-1' : 'md:col-start-3',
     ]}
   >
-    <div class="hud grid gap-6 bg-bg-2 p-6 sm:grid-cols-[minmax(0,11rem)_1fr] sm:p-7" style="--c: 17px">
+    <div class="hud grid gap-6 bg-bg-2 p-6 sm:grid-cols-[minmax(0,10rem)_1fr] sm:p-7" style="--c: 17px">
       {
         entry.poster ? (
           <img
