@@ -1,0 +1,42 @@
+[
+  {
+    "id": "2016",
+    "years": "2016–2022",
+    "title": "Battle of Hackers",
+    "subtitle": "The internal years",
+    "description": "Battle of Hackers began in 2016 as an in-house capture-the-flag for APU students. By 2022 it had grown into a full-day jeopardy board spanning reverse engineering, web, boot2root, forensics and cryptography, with RM4,000 in prizes on the table.",
+    "poster": "/posters/boh-2022.png"
+  },
+  {
+    "id": "2023",
+    "years": "2023",
+    "title": "ASEAN Battle of Hackers",
+    "subtitle": "Opening the doors to the region",
+    "description": "The first edition open beyond APU. Teams competed in separate ASEAN and Malaysia categories for RM15,000 in prizes, and the board gained OSINT and threat-hunting challenges.",
+    "poster": "/posters/boh-2023.jpeg"
+  },
+  {
+    "id": "2024",
+    "years": "2024",
+    "title": "International Battle of Hackers",
+    "subtitle": "Return of the Legends",
+    "description": "Battle of Hackers went international on 28 September 2024, backed by PayNet, MDEC, Ant International and others, and drew university teams from across Asia.",
+    "poster": "/posters/iboh-2024.jpeg"
+  },
+  {
+    "id": "2025",
+    "years": "2025",
+    "title": "International Battle of Hackers",
+    "subtitle": "Stage 1: Jeopardy",
+    "description": "A hybrid edition on 8 November 2025, played on campus and online from 08:00 to 18:00, with AWS, CREST, Kaspersky and CyberSecurity Malaysia among the sponsors.",
+    "poster": "/posters/iboh-2025.jpeg"
+  },
+  {
+    "id": "2026",
+    "years": "2026",
+    "title": "International Battle of Hackers",
+    "subtitle": "14 November 2026",
+    "description": "The next battle. Hybrid mode, APU campus, 8:30 AM to 6:00 PM, open to local and international students. Registration and the CTF platform open closer to the date.",
+    "status": "upcoming"
+  }
+]
