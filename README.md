@@ -35,8 +35,10 @@ entry to `src/data/timeline.json`:
 }
 ```
 
-Set `"status": "upcoming"` and omit `poster` for a future edition. `npm test`
-catches malformed entries and missing poster files.
+Set `"status": "upcoming"` for a future edition; it gets a red node and an
+"Incoming" badge. A poster is optional for upcoming entries (a teaser works well);
+without one a styled placeholder tile is shown. `npm test` catches malformed
+entries and missing poster files.
 
 **Logos.** Put `fsec-ss.png` and `apu.png` in `public/logos/`. The host section and
 footer pick them up automatically and fall back to text marks otherwise.
