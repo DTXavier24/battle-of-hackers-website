@@ -1,0 +1,44 @@
+---
+import { existsSync } from 'node:fs';
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+const logos = [
+  { path: '/logos/fsec-ss.png', alt: 'FSEC-SS', text: 'FSEC-SS' },
+  { path: '/logos/apu.png', alt: 'Asia Pacific University', text: 'APU' },
+].map((l) => ({ ...l, exists: existsSync(new URL(`../../public${l.path}`, import.meta.url)) }));
+---
+
+<footer class="border-t border-line">
+  <div
+    class="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:items-center md:justify-between md:px-10 lg:pr-28"
+  >
+    <div class="flex items-center gap-6">
+      {
+        logos.map((l) =>
+          l.exists ? (
+            <img src={l.path} alt={l.alt} width="48" height="48" class="h-12 w-auto" />
+          ) : (
+            <span class="font-display text-xl font-bold text-fg">{l.text}</span>
+          ),
+        )
+      }
+    </div>
+
+    <ul class="flex flex-wrap gap-x-6 gap-y-2">
+      {
+        site.socials.map((s) => (
+          <li>
+            <a href={s.href} class="text-fg-muted transition-colors hover:text-cyan">
+              {s.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="text-sm text-fg-muted">
+      &copy; {year} {site.host.short}, {site.host.university}
+    </p>
+  </div>
+</footer>

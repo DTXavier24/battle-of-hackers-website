@@ -1,10 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
+import SideRail from '../components/SideRail.astro';
+import Hero from '../components/Hero.astro';
+import Host from '../components/Host.astro';
+import Timeline from '../components/Timeline.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Base
   title="APU Battle of Hackers"
-  description="The annual capture-the-flag competition hosted by FSEC-SS at Asia Pacific University."
+  description="The annual capture-the-flag competition hosted by FSEC-SS at Asia Pacific University. 14 November 2026, hybrid, open to local and international students."
 >
-  <h1 class="font-display p-8 text-4xl">APU Battle of Hackers</h1>
+  <SideRail slot="rail" />
+  <Hero />
+  <Host />
+  <Timeline />
+  <Footer />
 </Base>
