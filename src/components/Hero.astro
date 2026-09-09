@@ -1,0 +1,81 @@
+---
+import { site } from '../data/site';
+
+const { event, ctfUrl } = site;
+---
+
+<section
+  id="home"
+  class="mx-auto flex min-h-screen max-w-6xl flex-col justify-center gap-12 px-6 py-24 md:px-10 lg:flex-row lg:items-center lg:gap-16 lg:pr-28"
+>
+  <div class="max-w-2xl">
+    <h1 class="font-display font-bold uppercase leading-[0.92] tracking-tight">
+      <span class="block text-2xl text-red sm:text-3xl md:text-4xl">APU</span>
+      <span class="glitch block text-[3.4rem] text-fg sm:text-7xl md:text-[6.5rem]">Battle</span>
+      <span class="block text-[3.4rem] text-cyan sm:text-7xl md:text-[6.5rem]">of Hackers</span>
+    </h1>
+
+    <!-- PLACEHOLDER: replace with the club's official summary. -->
+    <p class="mt-8 max-w-prose text-lg leading-relaxed text-fg-muted">
+      One day, one board, every category. Battle of Hackers is the annual capture-the-flag
+      competition run by students of APU's forensic and cybersecurity research centre, now open
+      to teams from anywhere in the world.
+    </p>
+
+    <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+      {
+        ctfUrl ? (
+          <a
+            href={ctfUrl}
+            class="hud inline-flex items-center bg-cyan px-8 py-4 font-display text-lg font-semibold text-bg transition-colors hover:bg-fg"
+          >
+            Join CTF
+          </a>
+        ) : (
+          <button
+            type="button"
+            disabled
+            aria-describedby="ctf-hint"
+            class="hud inline-flex cursor-not-allowed items-center bg-bg-2 px-8 py-4 font-display text-lg font-semibold text-fg-muted ring-1 ring-inset ring-line"
+          >
+            Join CTF
+          </button>
+        )
+      }
+      {
+        !ctfUrl && (
+          <p id="ctf-hint" class="text-sm text-fg-muted">
+            Coming soon. The CTF platform opens closer to the event.
+          </p>
+        )
+      }
+    </div>
+  </div>
+
+  <aside
+    aria-label="Event details"
+    class="hud w-full max-w-sm shrink-0 bg-line p-px lg:ml-auto"
+  >
+    <div class="hud flex flex-col gap-6 bg-bg-2 p-8" style="--c: 17px">
+      <p class="font-display leading-none">
+        <span class="block text-7xl font-bold text-fg">{event.day}</span>
+        <span class="mt-2 block text-2xl font-semibold text-red">{event.month} {event.year}</span>
+      </p>
+      <dl class="grid gap-3 text-fg">
+        <div>
+          <dt class="text-sm text-fg-muted">Time</dt>
+          <dd class="font-display text-lg">{event.time}</dd>
+        </div>
+        <div>
+          <dt class="text-sm text-fg-muted">Format</dt>
+          <dd class="font-display text-lg">{event.mode}</dd>
+        </div>
+        <div>
+          <dt class="text-sm text-fg-muted">Venue</dt>
+          <dd class="font-display text-lg">{event.venue}</dd>
+        </div>
+      </dl>
+      <p class="border-t border-line pt-4 text-sm text-cyan">{event.audience}</p>
+    </div>
+  </aside>
+</section>
