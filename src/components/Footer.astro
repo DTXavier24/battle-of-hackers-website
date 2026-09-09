@@ -49,7 +49,12 @@ const apuLogo = hasLogo('/logos/apu.png');
       {
         site.socials.map((s) => (
           <li>
-            <a href={s.href} class="text-fg-muted transition-colors hover:text-cyan">
+            <a
+              href={s.href}
+              target={s.href.startsWith('mailto:') ? undefined : '_blank'}
+              rel={s.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+              class="text-fg-muted transition-colors hover:text-cyan"
+            >
               {s.label}
             </a>
           </li>

@@ -23,10 +23,13 @@ export const site = {
     audience: 'Open to local and international students',
   },
 
-  // PLACEHOLDER: replace hrefs with the club's real links.
   socials: [
-    { label: 'Instagram', href: 'https://instagram.com/' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/' },
-    { label: 'Email', href: 'mailto:fsec@example.edu' },
+    { label: 'Instagram', href: 'https://www.instagram.com/apu_fsec.ss/' },
+    {
+      label: 'LinkedIn',
+      href: 'https://www.linkedin.com/company/forensic-security-research-center-student-section-apu/',
+    },
+    { label: 'Discord', href: 'https://discord.com/invite/U7asN8gmV9' },
+    { label: 'Email', href: 'mailto:fsec.ss@gmail.com' },
   ],
 } as const;
