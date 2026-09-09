@@ -1,0 +1,63 @@
+---
+import { existsSync } from 'node:fs';
+import { site } from '../data/site';
+
+const logoPath = '/logos/fsec-ss.png';
+const hasLogo = existsSync(new URL(`../../public${logoPath}`, import.meta.url));
+
+// PLACEHOLDER: replace with the club's official mission statement.
+const mission = [
+  'Give APU students a place to practise offensive and defensive security on real challenges.',
+  'Run Battle of Hackers every year as a fair, well-built competition for local and international teams.',
+  'Grow forensic and cybersecurity research skills through workshops, talks and study groups.',
+  'Connect students with the industry partners who sponsor and judge the competition.',
+];
+---
+
+<section
+  id="host"
+  class="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-[3fr_2fr] md:items-center md:px-10 lg:pr-28"
+>
+  <div>
+    <h2 class="font-display text-4xl font-bold leading-tight text-fg md:text-5xl">
+      Hosted by {site.host.short}
+    </h2>
+    <p class="mt-3 text-lg text-cyan">{site.host.full}</p>
+
+    <!-- PLACEHOLDER: replace with the club's official description. -->
+    <p class="mt-8 max-w-prose leading-relaxed text-fg-muted">
+      FSEC-SS is the student arm of the Forensic and Cybersecurity Research Centre at Asia
+      Pacific University. Its members design the challenges, build the infrastructure and run
+      the floor on competition day, then spend the rest of the year sharpening the skills that
+      go into the next one.
+    </p>
+
+    <h3 class="mt-10 font-display text-xl font-semibold text-fg">What we set out to do</h3>
+    <ul class="mt-4 grid gap-4">
+      {
+        mission.map((m) => (
+          <li class="flex gap-4 leading-relaxed text-fg-muted">
+            <span class="mt-2 block size-2.5 shrink-0 rotate-45 bg-cyan" aria-hidden="true" />
+            <span>{m}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div class="hud mx-auto w-full max-w-xs bg-line p-px">
+    <div class="hud flex aspect-square items-center justify-center bg-bg-2 p-8" style="--c: 17px">
+      {
+        hasLogo ? (
+          <img src={logoPath} alt={`${site.host.short} logo`} width="240" height="240" class="max-h-full w-auto" />
+        ) : (
+          <p class="text-center font-display">
+            <span class="block text-5xl font-bold text-cyan">FSEC</span>
+            <span class="block text-3xl font-semibold text-red">S.S</span>
+            <span class="mt-4 block text-sm text-fg-muted">{site.host.university}</span>
+          </p>
+        )
+      }
+    </div>
+  </div>
+</section>
