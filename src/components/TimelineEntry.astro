@@ -1,0 +1,67 @@
+---
+import type { TimelineEntry } from '../data/timeline.schema';
+
+interface Props {
+  entry: TimelineEntry;
+  index: number;
+}
+const { entry, index } = Astro.props;
+const onLeft = index % 2 === 0;
+const upcoming = entry.status === 'upcoming';
+---
+
+<li
+  id={`era-${entry.id}`}
+  class="relative grid grid-cols-[2rem_1fr] gap-x-4 md:grid-cols-[1fr_3rem_1fr] md:gap-x-8"
+>
+  <div class="col-start-1 row-start-1 flex justify-center pt-8 md:col-start-2">
+    <span
+      class:list={[
+        'block size-3.5 rotate-45 ring-4 ring-bg',
+        upcoming ? 'motion-pulse animate-pulse bg-red' : 'bg-cyan',
+      ]}
+      aria-hidden="true"></span>
+  </div>
+
+  <article
+    class:list={[
+      'reveal col-start-2 row-start-1 hud bg-line p-px',
+      onLeft ? 'md:col-start-1' : 'md:col-start-3',
+    ]}
+  >
+    <div class="hud grid gap-6 bg-bg-2 p-6 sm:grid-cols-[minmax(0,11rem)_1fr] sm:p-7" style="--c: 17px">
+      {
+        entry.poster ? (
+          <img
+            src={entry.poster}
+            alt={`${entry.title} ${entry.years} poster`}
+            width="1080"
+            height="1080"
+            loading="lazy"
+            decoding="async"
+            class="hud aspect-square w-full object-cover"
+            style="--c: 12px"
+          />
+        ) : (
+          <div
+            class="hud flex aspect-square w-full flex-col items-center justify-center gap-3 bg-bg ring-1 ring-inset ring-line"
+            style="--c: 12px"
+          >
+            <span class="font-display text-5xl font-bold text-fg">{entry.years}</span>
+            <span class="hud bg-red px-3 py-1 font-display text-sm font-semibold text-bg" style="--c: 8px">
+              Incoming
+            </span>
+          </div>
+        )
+      }
+      <div class="min-w-0">
+        <p class:list={['font-display text-2xl font-bold', upcoming ? 'text-red' : 'text-cyan']}>
+          {entry.years}
+        </p>
+        <h3 class="mt-1 font-display text-xl font-semibold leading-snug text-fg">{entry.title}</h3>
+        {entry.subtitle && <p class="mt-1 text-fg-muted">{entry.subtitle}</p>}
+        <p class="mt-4 text-sm leading-relaxed text-fg-muted">{entry.description}</p>
+      </div>
+    </div>
+  </article>
+</li>
